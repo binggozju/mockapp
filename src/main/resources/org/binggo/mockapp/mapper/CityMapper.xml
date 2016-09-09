@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.binggo.mockapp.mapper.CityMapper" >
+
+  <resultMap id="CityResultMap" type="org.binggo.mockapp.domain.City" >
+  	<result column="city_id" property="cityId" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="province" property="province" jdbcType="VARCHAR" />
+  </resultMap>
+
+  <!-- insert sentence  -->
+  <insert id="insert" useGeneratedKeys="true" keyProperty="city_id" >
+    insert into mockapp_city (name, province, update_time) values (#{name}, #{province, jdbcType=VARCHAR}, now())
+  </insert>
+  
+  <!-- delete sentence -->
+  <delete id="deleteCityById" parameterType="int">
+  	delete from mockapp_city where city_id = #{id}
+  </delete>
+  
+  <!-- update sentence -->
+  <update id="updateCityById" >
+  	update mockapp_city
+  	<set>
+  		<if test="city.name != null" >name = #{city.name},</if>
+  		<if test="city.province != null" >province = #{city.province}</if>
+  	</set>
+  	 where city_id = #{id}
+  </update>
+  
+  <!-- select sentence -->
+  <select id="getCityById" parameterType="int" resultMap="CityResultMap">
+  	select city_id, name, province from mockapp_city where city_id = #{id}
+  </select>
+  
+  <select id="getAllCities" resultMap="CityResultMap">
+  	select * from mockapp_city
+  </select>
+  
+</mapper>
