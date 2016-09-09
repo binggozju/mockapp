@@ -6,6 +6,9 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.github.pagehelper.PageHelper;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,6 +18,7 @@ import org.binggo.mockapp.domain.City;
 import org.binggo.mockapp.services.CityService;
 import org.binggo.mockapp.common.MockAppException;
 import org.binggo.mockapp.common.ResponseCode;
+import org.binggo.mockapp.common.PagingParam;
 
 @RestController
 @RequestMapping("/city")
@@ -71,9 +75,11 @@ public class CityController {
 		}
 	}
 	
-	@RequestMapping(method=RequestMethod.GET, value="/list")
-	public String getAllCities() throws Exception {
+	@RequestMapping(method=RequestMethod.POST, value="/list")
+	public String getAllCitiesWithPaging(@RequestBody PagingParam pagingParam) throws Exception {
 		logger.info("receive a select request to /city/list");
+		
+		PageHelper.startPage(pagingParam.getPageNum(), pagingParam.getPageSize());
 		
 		try {
 			List<City> cityList = cityService.getAllCities();

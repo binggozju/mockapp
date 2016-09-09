@@ -3,10 +3,14 @@
 <mapper namespace="org.binggo.mockapp.mapper.CityMapper" >
 
   <resultMap id="CityResultMap" type="org.binggo.mockapp.domain.City" >
-  	<result column="city_id" property="cityId" jdbcType="INTEGER" />
+  	<id column="city_id" property="cityId" jdbcType="INTEGER" />
     <result column="name" property="name" jdbcType="VARCHAR" />
     <result column="province" property="province" jdbcType="VARCHAR" />
   </resultMap>
+  
+  <sql id="City_Column_List" >
+    city_id, name, province
+  </sql>
 
   <!-- insert sentence  -->
   <insert id="insert" useGeneratedKeys="true" keyProperty="city_id" >
@@ -30,7 +34,9 @@
   
   <!-- select sentence -->
   <select id="getCityById" parameterType="int" resultMap="CityResultMap">
-  	select city_id, name, province from mockapp_city where city_id = #{id}
+  	select 
+  	<include refid="City_Column_List" /> 
+  	from mockapp_city where city_id = #{id}
   </select>
   
   <select id="getAllCities" resultMap="CityResultMap">

@@ -3,7 +3,7 @@
 <mapper namespace="org.binggo.mockapp.mapper.PersonMapper" >
 
   <resultMap id="PersonResultMap" type="org.binggo.mockapp.domain.Person" >
-  	<result column="person_id" property="personId" jdbcType="INTEGER" />
+  	<id column="person_id" property="personId" jdbcType="INTEGER" />
     <result column="name" property="name" jdbcType="VARCHAR" />
     <result column="phone" property="phone" jdbcType="VARCHAR" />
     <result column="city_id" property="cityId" jdbcType="INTEGER" />

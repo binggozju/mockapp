@@ -2,9 +2,11 @@ package org.binggo.mockapp.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.binggo.mockapp.domain.City;
 
+@Mapper
 public interface CityMapper {
 	// insert
     int insert(City record);
