@@ -5,11 +5,11 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-	<h1>Form</h1>
+	<h1>城市信息录入</h1>
     <form action="#" th:action="@{/}" th:object="${city}" method="post">
-    	<p>City: <input type="text" th:field="*{name}" /></p>
-        <p>Province: <input type="text" th:field="*{province}" /></p>
-        <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+    	<p>城市: <input type="text" th:field="*{name}" /></p>
+        <p>省份: <input type="text" th:field="*{province}" /></p>
+        <p><input type="submit" value="提交" /> <input type="reset" value="重置" /></p>
     </form>
 </body>
 </html>
