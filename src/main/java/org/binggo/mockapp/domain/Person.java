@@ -41,8 +41,8 @@ public class Person {
         this.cityId = cityId;
     }
     
-    @Override
-    public String toString() {
-    	return String.format("{\"person_id\": %d, \"name\": \"%s\", \"phone\": \"%s\", \"city_id\": %d}", personId, name, phone, cityId);
-    }
+    //@Override
+    //public String toString() {
+    //	return String.format("{\"person_id\": %d, \"name\": \"%s\", \"phone\": \"%s\", \"city_id\": %d}", personId, name, phone, cityId);
+    //}
 }

@@ -31,8 +31,8 @@ public class City {
         this.province = province == null ? null : province.trim();
     }
     
-    @Override
-    public String toString() {
-    	return String.format("{\"city_id\": %d, \"name\": \"%s\", \"province\": \"%s\"}", cityId, name, province);
-    }
+    //@Override
+    //public String toString() {
+    //	return String.format("{\"city_id\": %d, \"name\": \"%s\", \"province\": \"%s\"}", cityId, name, province);
+    //}
 }

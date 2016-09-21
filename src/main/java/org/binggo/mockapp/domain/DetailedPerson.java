@@ -66,11 +66,11 @@ public class DetailedPerson {
 		this.province = province;
 	}
 
-	@Override
-	public String toString() {
-		return String.format("{\"person_id\": %d, \"person_name\": \"%s\", "
-				+ "\"phone\": \"%s\", \"city_id\": %d, \"city_name\": \"%s\", "
-				+ "\"province\": \"%s\"}", personId, personName, phone, cityId, cityName, province);
-	}
+	//@Override
+	//public String toString() {
+	//	return String.format("{\"person_id\": %d, \"person_name\": \"%s\", "
+	//			+ "\"phone\": \"%s\", \"city_id\": %d, \"city_name\": \"%s\", "
+	//			+ "\"province\": \"%s\"}", personId, personName, phone, cityId, cityName, province);
+	//}
 	
 }

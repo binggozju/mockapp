@@ -51,9 +51,9 @@ public class Toy {
 		this.adult = adult;
 	}
 	
-	@Override
-	public String toString() {
-		return String.format("Toy[id(int)=%d, name(String)=%s, age(Integer)=%d, company(Byte)=%d, graduated(boolean)=%b, adult(Boolean)=%b]", id, name, age, company, graduated, adult);
-	}
+	//@Override
+	//public String toString() {
+	//	return String.format("Toy[id(int)=%d, name(String)=%s, age(Integer)=%d, company(Byte)=%d, graduated(boolean)=%b, adult(Boolean)=%b]", id, name, age, company, graduated, adult);
+	//}
 	
 }
