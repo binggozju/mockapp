@@ -20,6 +20,7 @@ import org.binggo.mockapp.domain.DetailedPerson;
 import org.binggo.mockapp.services.PersonService;
 import org.binggo.mockapp.common.APIResponse;
 import org.binggo.mockapp.common.MockAppException;
+import org.binggo.mockapp.common.PageInfoExt;
 import org.binggo.mockapp.common.ResponseCode;
 
 @RestController
@@ -63,7 +64,9 @@ public class PersonController {
 		
 		try {
 			List<DetailedPerson> detailedPersonList = personService.getAllDetailedPersons();
-			return new APIResponse(ResponseCode.OK, detailedPersonList);
+			PageInfoExt<DetailedPerson> personPage = new PageInfoExt<DetailedPerson>(detailedPersonList);
+			
+			return new APIResponse(ResponseCode.OK, personPage);
 			
 			//StringBuilder persons = new StringBuilder();
 			//for (DetailedPerson detailedPerson : detailedPersonList) {

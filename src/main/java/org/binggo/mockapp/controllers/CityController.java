@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.binggo.mockapp.domain.City;
 import org.binggo.mockapp.services.CityService;
 import org.binggo.mockapp.common.MockAppException;
+import org.binggo.mockapp.common.PageInfoExt;
 import org.binggo.mockapp.common.ResponseCode;
 import org.binggo.mockapp.common.APIResponse;
 
@@ -99,8 +100,9 @@ public class CityController {
 		
 		try {
 			List<City> cityList = cityService.getAllCities();
+			PageInfoExt<City> cityPage = new PageInfoExt<City>(cityList);
 			
-			return new APIResponse(ResponseCode.OK, cityList);
+			return new APIResponse(ResponseCode.OK, cityPage);
 			
 			//StringBuilder cities = new StringBuilder();
 			//for (City city : cityList) {
