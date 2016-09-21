@@ -5,6 +5,9 @@
 
 HOST=http://localhost:9754
 
+curl -X POST -H "Accept: application/json" -H "Content-type: application/json" -d "{}" $HOST/toy/add 2> /dev/null
+exit
+
 # ----------- test /city ------------
 # insert
 #curl -X POST -H "Accept: application/json" -H "Content-type: application/json" -d "{\"name\": \"Shaoxing\", \"province\": \"ZheJiang\"}" $HOST/city 2> /dev/null
@@ -13,7 +16,7 @@ HOST=http://localhost:9754
 
 # select
 #curl -X GET -H "Accept: application/json" $HOST/city/1 2> /dev/null
-curl -X POST -H "Accept: application/json" -H "Content-type: application/json" -d "{\"pageNum\": 2, \"pageSize\": 3}" $HOST/city/list 2> /dev/null
+#curl -X POST -H "Accept: application/json" -H "Content-type: application/json" -d "{\"pageNum\": 2, \"pageSize\": 3}" $HOST/city/list 2> /dev/null
 
 # update
 #curl -X PUT -H "Accept: application/json" -H "Content-type: application/json" $HOST/city/1 -d "{\"name\": \"Fuzhou\", \"province\": \"FuJian\"}" 2> /dev/null
