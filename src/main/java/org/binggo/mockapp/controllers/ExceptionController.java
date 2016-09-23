@@ -31,9 +31,9 @@ import org.springframework.web.servlet.ModelAndView;
  * @author Administrator
  *
  */
-@Controller
-@RequestMapping(value="error")
-@EnableConfigurationProperties({ServerProperties.class})
+//@Controller
+//@RequestMapping(value="error")
+//@EnableConfigurationProperties({ServerProperties.class})
 public class ExceptionController implements ErrorController {
 	
 	private ErrorAttributes errorAttributes;

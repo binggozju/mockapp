@@ -28,6 +28,7 @@
   	<set>
   		<if test="city.name != null" >name = #{city.name},</if>
   		<if test="city.province != null" >province = #{city.province}</if>
+  		<!--  <if test="true">province = "NoneProvince"</if>  -->
   	</set>
   	 where city_id = #{id}
   </update>
