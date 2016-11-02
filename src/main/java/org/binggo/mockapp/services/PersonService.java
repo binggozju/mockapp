@@ -28,11 +28,10 @@ public class PersonService {
 		personMapper.insert(person);
 	}
 	
-	public List<DetailedPerson> getAllDetailedPersons() throws MockAppException {
+	public List<DetailedPerson> getAllDetailedPersons() {
 		List<DetailedPerson> detailedPersons = personMapper.getAllDetailedPersons();
-		if (detailedPersons == null) {
-			logger.error("fail to execute getAllDetailedPersons on database");
-			throw new MockAppException("the result of executing getAllDetailedPersons is null");
+		if (detailedPersons.size() == 0) {
+			logger.error("There is no person on database");
 		}
 		return detailedPersons;
 	}

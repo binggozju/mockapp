@@ -36,11 +36,10 @@ public class CityService {
 	}
 	
 	
-	public List<City> getAllCities() throws MockAppException {
+	public List<City> getAllCities() {
 		List<City> cities = cityMapper.getAllCities();
-		if (cities == null) {
-			logger.error("fail to execute getAllCities on database");
-			throw new MockAppException("the result of executing getAllCities is null");
+		if (cities.size() == 0) {
+			logger.warn("There is no city on database");
 		}
 		return cities;
 	}

@@ -44,13 +44,11 @@ public class CityController {
 			cityService.addCity(city);
 			
 			return new APIResponse(ResponseCode.OK, null);
-			//return String.format("{\"retCode\": %d, \"retMsg\": \"%s\"}", ResponseCode.OK.getRetCode(), ResponseCode.OK.getRetMsg());
 			
 		} catch (MockAppException ex) {
 			logger.error(String.format("fail to add the city '%s': %s", city.getName(), ex.getMessage()));	
 			
 			return new APIResponse(ResponseCode.FAILURE, null);
-			//return String.format("{\"retCode\": %d, \"retMsg\": \"%s\"}", ResponseCode.FAILURE.getRetCode(), ResponseCode.FAILURE.getRetMsg());
 		}
 	}
 	
@@ -62,13 +60,11 @@ public class CityController {
 			cityService.deleteCityById(id);
 			
 			return new APIResponse(ResponseCode.OK, null);
-			//return String.format("{\"retCode\": %d, \"retMsg\":\"%s\"}", ResponseCode.OK.getRetCode(), ResponseCode.OK.getRetMsg());
 			
 		} catch (MockAppException ex) {
 			logger.error(String.format("fail to delete the city by city id '%d'", id));
 			
 			return new APIResponse(ResponseCode.FAILURE, null);
-			//return String.format("{\"retCode\": %d, \"retMsg\": \"%s\"}", ResponseCode.FAILURE.getRetCode(), ResponseCode.FAILURE.getRetMsg());
 		}
 	}
 	
@@ -80,13 +76,11 @@ public class CityController {
 			cityService.updateCityById(id, city);
 			
 			return new APIResponse(ResponseCode.OK, null);
-			//return String.format("{\"retCode\": %d, \"retMsg\": \"%s\"}", ResponseCode.OK.getRetCode(), ResponseCode.OK.getRetMsg());
 			
 		} catch (MockAppException ex) {
 			logger.error(String.format("fail to update the city by city id '%d'", id));
 			
 			return new APIResponse(ResponseCode.FAILURE, null);
-			//return String.format("{\"retCode\": %d, \"retMsg\": \"%s\"}", ResponseCode.FAILURE.getRetCode(), ResponseCode.FAILURE.getRetMsg());
 		}
 	}
 	
@@ -98,28 +92,10 @@ public class CityController {
 		
 		PageHelper.startPage(Integer.parseInt(offset), Integer.parseInt(size));
 		
-		try {
-			List<City> cityList = cityService.getAllCities();
-			PageInfoExt<City> cityPage = new PageInfoExt<City>(cityList);
-			
-			return new APIResponse(ResponseCode.OK, cityPage);
-			
-			//StringBuilder cities = new StringBuilder();
-			//for (City city : cityList) {
-			//	cities.append(city.toString() + ",");
-			//}
-			//if (cities.length() > 0) {
-			//	cities.deleteCharAt(cities.length() - 1);
-			//}
-			
-			//return String.format("{\"retCode\": %d, \"retMsg\": \"%s\", \"cities\": [%s]}", ResponseCode.OK.getRetCode(), ResponseCode.OK.getRetMsg(), cities.toString());
-			
-		} catch (MockAppException ex) {
-			logger.error(String.format("fail to list all the cities: %s", ex));
-			
-			return new APIResponse(ResponseCode.FAILURE, null);
-			//return String.format("{\"retCode\": %d, \"retMsg\": \"%s\"}", ResponseCode.FAILURE.getRetCode(), ResponseCode.FAILURE.getRetMsg());
-		}
+		List<City> cityList = cityService.getAllCities();
+		PageInfoExt<City> cityPage = new PageInfoExt<City>(cityList);
+		
+		return new APIResponse(ResponseCode.OK, cityPage);
 	}
 	
 	@RequestMapping(method=RequestMethod.GET, value="/{id}")
@@ -130,13 +106,11 @@ public class CityController {
 			City city = cityService.getCityById(id);
 			
 			return new APIResponse(ResponseCode.OK, city);
-			//return String.format("{\"retCode\": %d, \"retMsg\": \"%s\", \"city\": %s}", ResponseCode.OK.getRetCode(), ResponseCode.OK.getRetMsg(), city.toString());
 			
 		} catch (MockAppException ex) {
 			logger.error(String.format("fail to get the city by id '%d'", id));
 			
 			return new APIResponse(ResponseCode.FAILURE, null);
-			//return String.format("{\"retCode\": %d, \"retMsg\": \"%s\"}", ResponseCode.FAILURE.getRetCode(), ResponseCode.FAILURE.getRetMsg());
 		}
 	}
 }

@@ -42,15 +42,10 @@ public class PersonController {
 		
 		try {
 			personService.addPerson(person);
-			
 			return new APIResponse(ResponseCode.OK, null);
-			//return String.format("{\"retCode\": %d, \"retMsg\": \"%s\"}", ResponseCode.OK.getRetCode(), ResponseCode.OK.getRetMsg());
-			
 		} catch (MockAppException ex) {
 			logger.error(String.format("fail to add the person '%s': %s", person.getName(), ex.getMessage()));
-			
 			return new APIResponse(ResponseCode.FAILURE, null);
-			//return String.format("{\"retCode\": %d, \"retMsg\": \"%s\"}", ResponseCode.FAILURE.getRetCode(), ResponseCode.FAILURE.getRetMsg());
 		}	
 	}
 	
@@ -62,29 +57,10 @@ public class PersonController {
 		
 		PageHelper.startPage(Integer.parseInt(offset), Integer.parseInt(size));
 		
-		try {
-			List<DetailedPerson> detailedPersonList = personService.getAllDetailedPersons();
-			PageInfoExt<DetailedPerson> personPage = new PageInfoExt<DetailedPerson>(detailedPersonList);
-			
-			return new APIResponse(ResponseCode.OK, personPage);
-			
-			//StringBuilder persons = new StringBuilder();
-			//for (DetailedPerson detailedPerson : detailedPersonList) {
-			//	persons.append(detailedPerson.toString() + ",");
-			//}
-			
-			//if (persons.length() > 0) {
-			//	persons.deleteCharAt(persons.length() - 1);
-			//}
-			//return String.format("{\"retCode\": %d, \"retMsg\": \"%s\", \"persons\": [%s]}", ResponseCode.OK.getRetCode(), ResponseCode.OK.getRetMsg(), persons.toString());
-	
-		} catch (MockAppException ex) {
-			logger.error(String.format("fail to list all the detailed persons: %s", ex));
-			
-			return new APIResponse(ResponseCode.FAILURE, null);
-			//return String.format("{\"retCode\": %d, \"retMsg\": \"%s\"}", ResponseCode.FAILURE.getRetCode(), ResponseCode.FAILURE.getRetMsg());
-		}
+		List<DetailedPerson> detailedPersonList = personService.getAllDetailedPersons();
+		PageInfoExt<DetailedPerson> personPage = new PageInfoExt<DetailedPerson>(detailedPersonList);
 		
+		return new APIResponse(ResponseCode.OK, personPage);	
 	}
 
 }
